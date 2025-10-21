@@ -1,0 +1,15 @@
+# Core testing framework
+pytest>=8.0.0
+
+# Code quality and formatting
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
+
+# Performance profiling (optional)
+memory-profiler>=0.60.0
+line-profiler>=4.0.0
+
+# Development utilities
+ipython>=8.0.0
+jupyter>=1.0.0
