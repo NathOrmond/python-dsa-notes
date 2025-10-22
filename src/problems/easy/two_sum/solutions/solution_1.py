@@ -1,52 +1,33 @@
 """
-Two Sum - Brute Force Solution
-
-This is the most straightforward approach: check every pair of numbers
-to see if they sum to the target.
-
-Time Complexity: O(n²) - We check every pair
-Space Complexity: O(1) - Only using a constant amount of extra space
+Brute Force Solution for Two Sum
 """
 
-from typing import List
+from typing import List, Optional
 
 
 def two_sum_brute_force(nums: List[int], target: int) -> List[int]:
     """
-    Brute force approach: check all pairs.
+    Brute force approach for two sum.
     
     TODO: Implement this function
-    - Use nested loops to check every pair of numbers
-    - Return the indices of the two numbers that sum to target
-    - Time Complexity: O(n²)
-    - Space Complexity: O(1)
+    - Start with the most straightforward approach
+    - Consider all possible combinations/solutions
+    - Time Complexity: O(n²) or higher
+    - Space Complexity: O(1) or O(n)
     
     Args:
-        nums: List of integers
-        target: Target sum
+        nums: List[int], target: int
         
     Returns:
-        List containing indices of the two numbers that sum to target
+        List[int]: TODO - describe what this function returns
     """
     # TODO: Implement brute force solution
-    # Hint: Use nested loops - outer loop for first number, inner loop for second number
-    # Hint: Make sure j > i to avoid checking the same pair twice
+    # Hint: Think about the most obvious way to solve this problem
+    # Hint: Consider nested loops, checking all possibilities
     pass
 
 
-# Example usage and testing
+# Example usage
 if __name__ == "__main__":
-    # Test cases
-    test_cases = [
-        ([2, 7, 11, 15], 9, [0, 1]),
-        ([3, 2, 4], 6, [1, 2]),
-        ([3, 3], 6, [0, 1]),
-    ]
-    
-    for nums, target, expected in test_cases:
-        result = two_sum_brute_force(nums, target)
-        print(f"Input: nums={nums}, target={target}")
-        print(f"Output: {result}")
-        print(f"Expected: {expected}")
-        print(f"Correct: {result == expected}")
-        print("-" * 40)
+    # TODO: Add example usage here
+    print("TODO: Add example usage")

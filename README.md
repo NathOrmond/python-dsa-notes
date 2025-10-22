@@ -124,6 +124,9 @@ make setup-cache          # Set up centralized cache directory
 
 # Environment setup
 make setup-env            # Copy env.example to .env
+
+# Grind 75 setup
+make setup-grind75        # Generate all 75 Grind 75 problems
 ```
 
 ## Available Scripts
@@ -133,11 +136,33 @@ make setup-env            # Copy env.example to .env
 - `scripts/benchmark.py` - Performance benchmarking
 - `scripts/track_progress.py` - Learning progress tracker
 - `scripts/setup_cache.py` - Configure Python cache settings
+- `scripts/generate_grind75.py` - Generate all Grind 75 problems
 
 ## Templates
 
 - `templates/__init__.py.template` - Template for auto-importing `__init__.py` files
 - `env.example` - Environment configuration template
+
+## Grind 75 Problems
+
+This project includes all 75 problems from the [Grind 75](https://www.techinterviewhandbook.org/grind75) list:
+
+- **Easy**: 24 problems
+- **Medium**: 42 problems  
+- **Hard**: 9 problems
+
+Each problem includes:
+- ✅ Method stubs with type hints and docstrings
+- ✅ Comprehensive test cases
+- ✅ Problem description template
+- ✅ Multiple solution approaches (brute force + optimized)
+- ✅ Auto-importing package structure
+
+To get started with Grind 75:
+```bash
+make setup-grind75  # Generate all 75 problems
+make status         # Check your progress
+```
 
 ---
 

@@ -1,5 +1,11 @@
 # DSA Learning Project Makefile
 
+# Load environment variables if .env exists
+ifneq (,$(wildcard .env))
+    include .env
+    export
+endif
+
 .PHONY: help install test test-all check-status benchmark clean setup
 
 # Default target
@@ -111,6 +117,10 @@ setup-env:
 	else \
 		echo "⚠️  .env already exists, skipping..."; \
 	fi
+
+setup-grind75:
+	@echo "🚀 Setting up Grind 75 problems..."
+	@python scripts/generate_grind75.py
 
 # Learning workflow shortcuts
 learn-two-sum: status

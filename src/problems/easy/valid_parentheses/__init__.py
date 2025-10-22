@@ -26,8 +26,8 @@ def _auto_import_functions():
         return imported_functions
     except Exception:
         # Fallback to manual import if dynamic discovery fails
-        from .valid_parentheses import valid_parentheses, valid_parentheses_brute_force, valid_parentheses_stack
-        return ['valid_parentheses', 'valid_parentheses_brute_force', 'valid_parentheses_stack']
+        from .valid_parentheses import valid_parentheses, valid_parentheses_brute_force, valid_parentheses_optimized
+        return ['valid_parentheses', 'valid_parentheses_brute_force', 'valid_parentheses_optimized']
 
 # Auto-import all functions
 __all__ = _auto_import_functions()

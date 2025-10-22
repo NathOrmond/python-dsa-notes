@@ -26,8 +26,8 @@ def _auto_import_functions():
         return imported_functions
     except Exception:
         # Fallback to manual import if dynamic discovery fails
-        from .two_sum import two_sum, two_sum_brute_force, two_sum_hash_map
-        return ['two_sum', 'two_sum_brute_force', 'two_sum_hash_map']
+        from .two_sum import two_sum, two_sum_brute_force, two_sum_optimized
+        return ['two_sum', 'two_sum_brute_force', 'two_sum_optimized']
 
 # Auto-import all functions
 __all__ = _auto_import_functions()
