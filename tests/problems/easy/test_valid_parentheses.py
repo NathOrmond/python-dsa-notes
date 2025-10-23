@@ -3,7 +3,7 @@ Tests for Valid Parentheses
 """
 
 import pytest
-from src.problems.easy.valid_parentheses import valid_parentheses, valid_parentheses_brute_force
+from src.problems.easy.valid_parentheses import valid_parentheses
 
 
 class TestValidParentheses:
@@ -48,57 +48,6 @@ class TestValidParentheses:
         assert valid_parentheses("{[}]") == False
         assert valid_parentheses("(]") == False
     
-    def test_brute_force_basic(self):
-        """Test brute force approach with basic examples."""
-        # Test cases from problem description
-        assert valid_parentheses_brute_force("()") == True
-        assert valid_parentheses_brute_force("()[]{}") == True
-        assert valid_parentheses_brute_force("(]") == False
-        assert valid_parentheses_brute_force("([])") == True
-        assert valid_parentheses_brute_force("([)]") == False
-    
-    def test_brute_force_edge_cases(self):
-        """Test brute force approach with edge cases."""
-        # Empty string
-        assert valid_parentheses_brute_force("") == True
-        
-        # Single brackets
-        assert valid_parentheses_brute_force("(") == False
-        assert valid_parentheses_brute_force(")") == False
-        assert valid_parentheses_brute_force("[") == False
-        assert valid_parentheses_brute_force("]") == False
-        assert valid_parentheses_brute_force("{") == False
-        assert valid_parentheses_brute_force("}") == False
-        
-        # Multiple unmatched brackets
-        assert valid_parentheses_brute_force("(((") == False
-        assert valid_parentheses_brute_force(")))") == False
-        assert valid_parentheses_brute_force("([)]") == False
-    
-    def test_approaches_consistent(self):
-        """Test that different approaches give consistent results."""
-        test_cases = [
-            "()",
-            "()[]{}", 
-            "(]",
-            "([])",
-            "([)]",
-            "",
-            "(",
-            ")",
-            "(((",
-            ")))",
-            "{[}]",
-            "({[]})",
-            "((()))",
-            "[[[]]]",
-            "{{{}}}",
-        ]
-        
-        for test_case in test_cases:
-            result1 = valid_parentheses(test_case)
-            result2 = valid_parentheses_brute_force(test_case)
-            assert result1 == result2, f"Inconsistent results for '{test_case}': {result1} vs {result2}"
     
     def test_performance(self):
         """Test performance characteristics."""
@@ -109,8 +58,6 @@ class TestValidParentheses:
         # These should complete quickly
         assert valid_parentheses(large_valid) == True
         assert valid_parentheses(large_invalid) == False
-        assert valid_parentheses_brute_force(large_valid) == True
-        assert valid_parentheses_brute_force(large_invalid) == False
     
     def test_invalid_input(self):
         """Test handling of invalid input."""
