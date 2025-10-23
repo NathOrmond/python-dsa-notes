@@ -9,72 +9,54 @@ from typing import List, Optional
 
 def valid_parentheses(s: str) -> bool:
     """
-    Main solution function for valid parentheses.
-    
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
+    Determines if the input string containing parentheses is valid.
+    Valid means: open brackets are closed by the same type, in correct order,
+    and every close bracket has a corresponding open bracket.
     
     Args:
-        s: str
+        s: String containing only '(', ')', '{', '}', '[' and ']'
         
     Returns:
-        bool: TODO - describe what this function returns
-        
-    Raises:
-        ValueError: If input is invalid
+        bool: True if the string is valid, False otherwise
     """
-    # Use the optimized solution as the main implementation
-    return valid_parentheses_optimized(s)
+    # We are going to initialise a stack to keep track of parentheses as we go
+    # When we encounter an open parenthesis we will add it to the stack
+    # When we encounter a closing parenthesis we will pop the stacka and check 
+    # for a match
+    stack = []
+    brackets = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    }
+    for char in s:
+        if char in brackets.keys():
+            stack.append(char)
+        elif char in brackets.values():
+            if len(stack) == 0:
+                return False;
+            else:
+                curr = stack.pop()
+                if brackets[curr] != char:
+                    return False;
+        else:
+            continue;
+    return len(stack) == 0;
 
-
-def valid_parentheses_brute_force(s: str) -> bool:
-    """
-    Brute force approach for valid parentheses.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        s: str
-        
-    Returns:
-        bool: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
-
-
-def valid_parentheses_optimized(s: str) -> bool:
-    """
-    Optimized approach for valid parentheses.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        s: str
-        
-    Returns:
-        bool: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
-    pass
 
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    # Test cases from the problem description
+    test_cases = [
+        "()",      # True
+        "()[]{}",  # True  
+        "(]",      # False
+        "([])",    # True
+        "([)]",    # False
+    ]
+    
+    print("Testing valid_parentheses function:")
+    for test_case in test_cases:
+        result = valid_parentheses(test_case)
+        print(f"valid_parentheses('{test_case}') = {result}")

@@ -1,80 +1,77 @@
 """
 Merge Two Sorted Lists Problem
 
-This module contains the main solution interface and method stubs for different approaches.
+This module contains the solution for merging two sorted linked lists.
 """
 
-from typing import List, Optional
+from typing import Optional
+
+
+class ListNode:
+    """Definition for singly-linked list node."""
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+    
+    def __repr__(self):
+        """String representation for debugging."""
+        values = []
+        current = self
+        while current:
+            values.append(str(current.val))
+            current = current.next
+        return " -> ".join(values) + " -> None"
 
 
 def merge_two_sorted_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     """
-    Main solution function for merge two sorted lists.
+    Merge two sorted linked lists into one sorted list.
     
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
+    The list should be made by splicing together the nodes of the first two lists.
     
     Args:
-        list1: Optional[ListNode], list2: Optional[ListNode]
+        list1: Head of the first sorted linked list
+        list2: Head of the second sorted linked list
         
     Returns:
-        Optional[ListNode]: TODO - describe what this function returns
+        Head of the merged sorted linked list
         
-    Raises:
-        ValueError: If input is invalid
+    Examples:
+        >>> # Example 1: list1 = [1,2,4], list2 = [1,3,4]
+        >>> # Output: [1,1,2,3,4,4]
+        >>> 
+        >>> # Example 2: list1 = [], list2 = []
+        >>> # Output: []
+        >>> 
+        >>> # Example 3: list1 = [], list2 = [0]
+        >>> # Output: [0]
     """
-    # Use the optimized solution as the main implementation
-    return merge_two_sorted_lists_iterative(list1)
-
-
-def merge_two_sorted_lists_brute_force(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-    """
-    Brute force approach for merge two sorted lists.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        list1: Optional[ListNode], list2: Optional[ListNode]
-        
-    Returns:
-        Optional[ListNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
-
-
-def merge_two_sorted_lists_iterative(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-    """
-    Optimized approach for merge two sorted lists.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        list1: Optional[ListNode], list2: Optional[ListNode]
-        
-    Returns:
-        Optional[ListNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
+    # TODO: Implement your solution here
+    # Hint: Use a dummy node to simplify the merging process
+    # Hint: Compare values from both lists and link the smaller one
+    # Hint: Handle remaining nodes from either list
     pass
 
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    # Test cases from the problem description
+    print("Testing merge_two_sorted_lists function:")
+    
+    # Example 1: list1 = [1,2,4], list2 = [1,3,4]
+    # Expected output: [1,1,2,3,4,4]
+    list1 = ListNode(1, ListNode(2, ListNode(4)))
+    list2 = ListNode(1, ListNode(3, ListNode(4)))
+    result1 = merge_two_sorted_lists(list1, list2)
+    print(f"Example 1: {result1}")
+    
+    # Example 2: list1 = [], list2 = []
+    # Expected output: []
+    result2 = merge_two_sorted_lists(None, None)
+    print(f"Example 2: {result2}")
+    
+    # Example 3: list1 = [], list2 = [0]
+    # Expected output: [0]
+    list3 = ListNode(0)
+    result3 = merge_two_sorted_lists(None, list3)
+    print(f"Example 3: {result3}")
