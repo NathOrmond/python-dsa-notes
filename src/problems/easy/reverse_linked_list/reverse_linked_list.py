@@ -1,80 +1,75 @@
 """
 Reverse Linked List Problem
 
-This module contains the main solution interface and method stubs for different approaches.
+This module contains the solution for reversing a singly linked list.
 """
 
-from typing import List, Optional
+from typing import Optional
+
+
+class ListNode:
+    """Definition for singly-linked list node."""
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+    
+    def __repr__(self):
+        """String representation for debugging."""
+        values = []
+        current = self
+        while current:
+            values.append(str(current.val))
+            current = current.next
+        return " -> ".join(values) + " -> None"
 
 
 def reverse_linked_list(head: Optional[ListNode]) -> Optional[ListNode]:
     """
-    Main solution function for reverse linked list.
+    Reverse a singly linked list.
     
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
+    Given the head of a singly linked list, reverse the list, and return the reversed list.
     
     Args:
-        head: Optional[ListNode]
+        head: Head of the singly linked list
         
     Returns:
-        Optional[ListNode]: TODO - describe what this function returns
+        Head of the reversed linked list
         
-    Raises:
-        ValueError: If input is invalid
+    Examples:
+        >>> # Example 1: head = [1,2,3,4,5]
+        >>> # Output: [5,4,3,2,1]
+        >>> 
+        >>> # Example 2: head = [1,2]
+        >>> # Output: [2,1]
+        >>> 
+        >>> # Example 3: head = []
+        >>> # Output: []
     """
-    # Use the optimized solution as the main implementation
-    return reverse_linked_list_iterative(head)
-
-
-def reverse_linked_list_brute_force(head: Optional[ListNode]) -> Optional[ListNode]:
-    """
-    Brute force approach for reverse linked list.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        head: Optional[ListNode]
-        
-    Returns:
-        Optional[ListNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
-
-
-def reverse_linked_list_iterative(head: Optional[ListNode]) -> Optional[ListNode]:
-    """
-    Optimized approach for reverse linked list.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        head: Optional[ListNode]
-        
-    Returns:
-        Optional[ListNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
+    # TODO: Implement your solution here
+    # Hint: Use three pointers: prev, current, and next
+    # Hint: Iterate through the list and reverse the links
+    # Hint: Return the new head (which was the original tail)
     pass
 
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    # Test cases from the problem description
+    print("Testing reverse_linked_list function:")
+    
+    # Example 1: head = [1,2,3,4,5]
+    # Expected output: [5,4,3,2,1]
+    head1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+    result1 = reverse_linked_list(head1)
+    print(f"Example 1: {result1}")
+    
+    # Example 2: head = [1,2]
+    # Expected output: [2,1]
+    head2 = ListNode(1, ListNode(2))
+    result2 = reverse_linked_list(head2)
+    print(f"Example 2: {result2}")
+    
+    # Example 3: head = []
+    # Expected output: []
+    result3 = reverse_linked_list(None)
+    print(f"Example 3: {result3}")
