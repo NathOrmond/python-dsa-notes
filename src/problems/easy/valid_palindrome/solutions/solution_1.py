@@ -1,33 +1,29 @@
 """
-Brute Force Solution for Valid Palindrome
+Solution for Valid Palindrome
 """
 
 from typing import List, Optional
 
 
-def valid_palindrome_brute_force(s: str) -> bool:
+def valid_palindrome_clean_and_compare(s: str) -> bool:
     """
-    Brute force approach for valid palindrome.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
+    Clean and compare approach for valid palindrome.
     
     Args:
-        s: str
+        s: String to check
         
     Returns:
-        bool: TODO - describe what this function returns
+        True if the string is a palindrome, False otherwise
     """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
+    clean_text = ''.join(char for char in s.lower() if char.isalnum())
+    for index, char in enumerate(clean_text):
+        if char != clean_text[len(clean_text) - index - 1]:
+            return False
+    return True
 
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    print(f"valid_palindrome_clean_and_compare('A man, a plan, a canal: Panama') = {valid_palindrome_clean_and_compare('A man, a plan, a canal: Panama')}")
+    print(f"valid_palindrome_clean_and_compare('race a car') = {valid_palindrome_clean_and_compare('race a car')}")
+    print(f"valid_palindrome_clean_and_compare(' ') = {valid_palindrome_clean_and_compare(' ')}")

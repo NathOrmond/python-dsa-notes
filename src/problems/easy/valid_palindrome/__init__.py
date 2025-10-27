@@ -26,8 +26,8 @@ def _auto_import_functions():
         return imported_functions
     except Exception:
         # Fallback to manual import if dynamic discovery fails
-        from .valid_palindrome import valid_palindrome, valid_palindrome_brute_force, valid_palindrome_optimized
-        return ['valid_palindrome', 'valid_palindrome_brute_force', 'valid_palindrome_optimized']
+        from .valid_palindrome import valid_palindrome
+        return ['valid_palindrome']
 
 # Auto-import all functions
 __all__ = _auto_import_functions()
