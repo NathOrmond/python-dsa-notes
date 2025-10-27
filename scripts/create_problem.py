@@ -43,8 +43,8 @@ def _auto_import_functions():
         return imported_functions
     except Exception:
         # Fallback to manual import if dynamic discovery fails
-        from .{problem_name} import {problem_name}, {problem_name}_brute_force, {problem_name}_optimized
-        return ['{problem_name}', '{problem_name}_brute_force', '{problem_name}_optimized']
+        from .{problem_name} import {problem_name}
+        return ['{problem_name}']
 
 # Auto-import all functions
 __all__ = _auto_import_functions()
@@ -111,9 +111,11 @@ from typing import List
 
 def {problem_name}(nums: List[int], target: int) -> List[int]:
     """
-    Main solution function.
+    Solution function for {problem_name.replace('_', ' ')}.
     
-    TODO: Implement the optimal solution here
+    TODO: Implement this function
+    - Time Complexity: TODO
+    - Space Complexity: TODO
     
     Args:
         nums: Input array
@@ -122,31 +124,7 @@ def {problem_name}(nums: List[int], target: int) -> List[int]:
     Returns:
         Solution result
     """
-    # Use the optimal approach as the main implementation
-    return {problem_name}_optimized(nums, target)
-
-
-def {problem_name}_brute_force(nums: List[int], target: int) -> List[int]:
-    """
-    Brute force approach.
-    
-    TODO: Implement brute force solution
-    - Time Complexity: O(?)
-    - Space Complexity: O(?)
-    """
-    # TODO: Implement brute force solution
-    pass
-
-
-def {problem_name}_optimized(nums: List[int], target: int) -> List[int]:
-    """
-    Optimized approach.
-    
-    TODO: Implement optimized solution
-    - Time Complexity: O(?)
-    - Space Complexity: O(?)
-    """
-    # TODO: Implement optimized solution
+    # TODO: Implement your solution
     pass
 '''
     
@@ -157,27 +135,27 @@ def {problem_name}_optimized(nums: List[int], target: int) -> List[int]:
 def create_solution_files(solutions_dir: Path, problem_name: str):
     """Create solution files."""
     
-    # Solution 1 (Brute Force)
-    solution_1_content = f'''"""
-{problem_name.replace('_', ' ').title()} - Brute Force Solution
+    # Create a single simple solution file
+    solution_content = f'''"""
+{problem_name.replace('_', ' ').title()} Solution
 
-TODO: Add description of brute force approach
+TODO: Add solution approach description here
 
-Time Complexity: O(?) - TODO: Fill in
-Space Complexity: O(?) - TODO: Fill in
+Time Complexity: TODO
+Space Complexity: TODO
 """
 
 from typing import List
 
 
-def {problem_name}_brute_force(nums: List[int], target: int) -> List[int]:
+def {problem_name}(nums: List[int], target: int) -> List[int]:
     """
-    Brute force approach.
+    Solution for {problem_name.replace('_', ' ')}.
     
     TODO: Implement this function
-    - Add implementation hints here
-    - Time Complexity: O(?)
-    - Space Complexity: O(?)
+    - Add your solution here
+    - Time Complexity: TODO
+    - Space Complexity: TODO
     
     Args:
         nums: Input array
@@ -186,8 +164,7 @@ def {problem_name}_brute_force(nums: List[int], target: int) -> List[int]:
     Returns:
         Solution result
     """
-    # TODO: Implement brute force solution
-    # Hint: Start with the most straightforward approach
+    # TODO: Implement your solution
     pass
 
 
@@ -199,57 +176,7 @@ if __name__ == "__main__":
     ]
     
     for test_input, expected in test_cases:
-        result = {problem_name}_brute_force(*test_input)
-        print(f"Input: {{test_input}}")
-        print(f"Output: {{result}}")
-        print(f"Expected: {{expected}}")
-        print(f"Correct: {{result == expected}}")
-        print("-" * 40)
-'''
-    
-    # Solution 2 (Optimized)
-    solution_2_content = f'''"""
-{problem_name.replace('_', ' ').title()} - Optimized Solution
-
-TODO: Add description of optimized approach
-
-Time Complexity: O(?) - TODO: Fill in
-Space Complexity: O(?) - TODO: Fill in
-"""
-
-from typing import List
-
-
-def {problem_name}_optimized(nums: List[int], target: int) -> List[int]:
-    """
-    Optimized approach.
-    
-    TODO: Implement this function
-    - Add implementation hints here
-    - Time Complexity: O(?)
-    - Space Complexity: O(?)
-    
-    Args:
-        nums: Input array
-        target: Target value
-        
-    Returns:
-        Solution result
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about data structures that can help
-    pass
-
-
-# Example usage and testing
-if __name__ == "__main__":
-    # Test cases
-    test_cases = [
-        # TODO: Add test cases here
-    ]
-    
-    for test_input, expected in test_cases:
-        result = {problem_name}_optimized(*test_input)
+        result = {problem_name}(*test_input)
         print(f"Input: {{test_input}}")
         print(f"Output: {{result}}")
         print(f"Expected: {{expected}}")
@@ -258,10 +185,7 @@ if __name__ == "__main__":
 '''
     
     with open(solutions_dir / "solution_1.py", "w") as f:
-        f.write(solution_1_content)
-    
-    with open(solutions_dir / "solution_2.py", "w") as f:
-        f.write(solution_2_content)
+        f.write(solution_content)
 
 
 def create_explanation_templates(explanations_dir: Path, problem_name: str):
