@@ -112,6 +112,9 @@ make create-problem DIFFICULTY=easy NAME=valid_parentheses
 # Run specific tests
 make test-two-sum
 
+# Interactive test selector (only shows implemented tests by default)
+make test-interactive
+
 # Benchmark performance
 make benchmark-two-sum
 

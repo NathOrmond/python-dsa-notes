@@ -6,7 +6,7 @@ ifneq (,$(wildcard .env))
     export
 endif
 
-.PHONY: help install test test-all check-status benchmark clean setup
+.PHONY: help install test test-all test-interactive check-status benchmark clean setup
 
 # Default target
 help:
@@ -21,6 +21,7 @@ help:
 	@echo "  make test-easy   - Run easy problem tests"
 	@echo "  make test-medium - Run medium problem tests"
 	@echo "  make test-hard   - Run hard problem tests"
+	@echo "  make test-interactive - Interactive test selector"
 	@echo "  make test-two-sum - Run two_sum specific tests"
 	@echo ""
 	@echo "Status & Progress:"
@@ -60,6 +61,9 @@ test-hard:
 
 test-two-sum:
 	python -m pytest tests/problems/easy/test_two_sum.py -v
+
+test-interactive:
+	python scripts/run_tests_interactive.py
 
 # Status checking
 status:

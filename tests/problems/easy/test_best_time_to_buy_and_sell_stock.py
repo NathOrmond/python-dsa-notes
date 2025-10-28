@@ -3,62 +3,52 @@ Tests for Best Time To Buy And Sell Stock
 """
 
 import pytest
-from src.problems.easy.best_time_to_buy_and_sell_stock import best_time_to_buy_and_sell_stock, best_time_to_buy_and_sell_stock_brute_force
+from src.problems.easy.best_time_to_buy_and_sell_stock import best_time_to_buy_and_sell_stock
 
 
 class TestBestTimeToBuyAndSellStock:
     """Test cases for best_time_to_buy_and_sell_stock problem."""
     
-    def test_main_function_basic(self):
-        """Test main function with basic examples."""
-        # TODO: Add basic test cases
-        # Example: assert best_time_to_buy_and_sell_stock(nums = [1, 2, 3, 4, 5]) == TODO
-        pass
+    def test_basic_examples(self):
+        """Test with basic examples."""
+        # Example 1: Should return 5 (buy at 1, sell at 6)
+        assert best_time_to_buy_and_sell_stock([7, 1, 5, 3, 6, 4]) == 5
+        
+        # Example 2: No profit possible
+        assert best_time_to_buy_and_sell_stock([7, 6, 4, 3, 1]) == 0
+        
+        # Single transaction with profit
+        assert best_time_to_buy_and_sell_stock([2, 4, 1]) == 2
+        
+        # All increasing prices
+        assert best_time_to_buy_and_sell_stock([1, 2, 3, 4, 5]) == 4
     
-    def test_main_function_edge_cases(self):
-        """Test main function with edge cases."""
-        # TODO: Add edge case tests
-        # - Empty input
-        # - Single element
-        # - Maximum constraints
-        pass
-    
-    def test_brute_force_basic(self):
-        """Test brute force approach with basic examples."""
-        # TODO: Add basic test cases for brute force
-        pass
-    
-    def test_brute_force_edge_cases(self):
-        """Test brute force approach with edge cases."""
-        # TODO: Add edge case tests for brute force
-        pass
-    
-    def test_approaches_consistent(self):
-        """Test that different approaches give consistent results."""
-        # TODO: Test that all approaches give the same result
-        # test_cases = [
-        #     # Add test cases here
-        # ]
-        # for test_case in test_cases:
-        #     result1 = best_time_to_buy_and_sell_stock(test_case)
-        #     result2 = best_time_to_buy_and_sell_stock_brute_force(test_case)
-        #     assert result1 == result2
-        pass
+    def test_edge_cases(self):
+        """Test edge cases."""
+        # Single element (no profit possible)
+        assert best_time_to_buy_and_sell_stock([5]) == 0
+        
+        # Two elements with profit
+        assert best_time_to_buy_and_sell_stock([1, 2]) == 1
+        
+        # Two elements without profit
+        assert best_time_to_buy_and_sell_stock([2, 1]) == 0
+        
+        # All same price
+        assert best_time_to_buy_and_sell_stock([3, 3, 3, 3]) == 0
+        
+        # Best buy happens before best sell
+        assert best_time_to_buy_and_sell_stock([3, 2, 6, 5, 0, 3]) == 4
     
     def test_performance(self):
         """Test performance characteristics."""
-        # TODO: Add performance tests
-        # - Large input sizes
-        # - Time complexity verification
-        pass
-    
-    def test_invalid_input(self):
-        """Test handling of invalid input."""
-        # TODO: Add tests for invalid input
-        # - None values
-        # - Invalid types
-        # - Out of bounds
-        pass
+        # Large array with profit
+        large_array_profit = [i for i in range(1000, 0, -1)] + [2000, 1500]
+        assert best_time_to_buy_and_sell_stock(large_array_profit) >= 1500
+        
+        # Large array without profit
+        large_array_no_profit = list(range(1000, 0, -1))
+        assert best_time_to_buy_and_sell_stock(large_array_no_profit) == 0
 
 
 if __name__ == "__main__":
