@@ -19,13 +19,25 @@ class Solution:
         Returns:
             int
         """
-        raise NotImplementedError("Implement the single canonical solution in Solution.solve")
+        return self.search(nums, target)
 
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = self.mid(low, high)
+            curr = nums[mid]
+            if curr == target:
+                return mid
+            if curr < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
 
-def binary_search(nums: List[int], target: int) -> int:
-    """Thin wrapper to the canonical Solution implementation."""
-    return Solution().solve(nums, target)
-
+    def mid(self, low: int, high: int):
+        delta = (high - low) // 2
+        return low + delta
 
 if __name__ == "__main__":
     pass
