@@ -100,6 +100,40 @@ src/problems/{difficulty}/{problem_name}/
    # or: pytest
    ```
 
+## Centralized Python Bytecode Cache
+
+Python writes compiled `.pyc` files for faster imports. By default, these live in `__pycache__` folders near source files. To keep the tree clean, enable centralized caching (Python 3.8+):
+
+1) Create the cache directory:
+```bash
+make setup-cache
+```
+2) In `.env`, set:
+```bash
+PYTHONPYCACHEPREFIX=.cache/python
+```
+3) Use Make targets (they auto-load `.env`) or source the env:
+```bash
+source setup_env.sh
+```
+4) Run tests as usual:
+```bash
+make test
+```
+
+Optional:
+```bash
+# Disable bytecode for a run
+PYTHONDONTWRITEBYTECODE=1 python ...
+# or
+python -B ...
+```
+
+Verify centralized caches:
+```bash
+find .cache/python -type f -name "*.pyc" | head
+```
+
 ## Quick Commands
 
 ```bash
@@ -124,6 +158,8 @@ python scripts/track_progress.py --report
 # Cache management
 make clean-cache          # Remove __pycache__ directories
 make setup-cache          # Set up centralized cache directory
+python scripts/clean_caches.py       # Clean all caches/build artifacts
+python scripts/clean_caches.py -h    # See options
 
 # Environment setup
 make setup-env            # Copy env.example to .env
@@ -138,6 +174,7 @@ make setup-grind75        # Generate all 75 Grind 75 problems
 - `scripts/create_problem.py` - Generate new problem structure
 - `scripts/benchmark.py` - Performance benchmarking
 - `scripts/track_progress.py` - Learning progress tracker
+- `scripts/clean_caches.py` - Remove caches and build artifacts across repo
 - `scripts/setup_cache.py` - Configure Python cache settings
 - `scripts/generate_grind75.py` - Generate all Grind 75 problems
 
