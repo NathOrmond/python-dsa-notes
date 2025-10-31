@@ -7,11 +7,11 @@ This repository is for learning and practicing data structures and algorithms us
 ## Project Structure
 
 - `src/`: Contains the implementation of various data structures and algorithms.
-   - `problems/`: Contains leetcode style problems
-      - `easy/`: Contains leetcode easies
-      - `medium/`: leetcode mediums
-      - `hard/`: leetcode hards
-   - `topics/`: Specific dsa related topics with a focus
+  - `problems/`: Contains leetcode style problems
+    - `easy/`: Contains leetcode easies
+    - `medium/`: leetcode mediums
+    - `hard/`: leetcode hards
+  - `topics/`: Specific dsa related topics with a focus
 - `tests/`: Contains unit tests for the code in `src/` -- mirrors directory structure of `src/`.
 
 ---
@@ -19,6 +19,7 @@ This repository is for learning and practicing data structures and algorithms us
 ## Problem-Solving Methodology
 
 ### Step 1: Problem Analysis
+
 1. **Write the problem description** in a `.md` file (e.g., `two_sum.md`)
 2. **Create method stubs only** in the main solution file (e.g., `two_sum.py`) with:
    - Proper type hints
@@ -26,6 +27,7 @@ This repository is for learning and practicing data structures and algorithms us
    - Empty implementation (return placeholder values)
 
 ### Step 2: Test-Driven Development
+
 1. **Write comprehensive unit tests** before implementing solutions
 2. Tests should cover:
    - Basic examples from the problem
@@ -34,6 +36,7 @@ This repository is for learning and practicing data structures and algorithms us
    - Multiple solution approaches
 
 ### Step 3: Solution Architecture
+
 Each problem follows this structure:
 
 ```
@@ -51,6 +54,7 @@ src/problems/{difficulty}/{problem_name}/
 ```
 
 ### Step 4: Implementation Strategy
+
 1. **Main file (`{problem_name}.py`)**:
    - Contains the "official" solution interface
    - Should be solution-agnostic (no specific algorithm implementation)
@@ -67,6 +71,7 @@ src/problems/{difficulty}/{problem_name}/
    - Trade-offs between different solutions
 
 ### Example Workflow
+
 1. Read `two_sum.md` to understand the problem
 2. Write tests in `tests/problems/easy/test_two_sum.py`
 3. Create method stubs in `two_sum.py`
@@ -78,15 +83,20 @@ src/problems/{difficulty}/{problem_name}/
 ## Getting Started
 
 1. Clone the repository:
+
    ```bash
    git clone git@github.com:NathOrmond/python-dsa-notes.git
    ```
+
 2. Install the dependencies:
+
    ```bash
    make install
    # or: pip install -r requirements.txt
    ```
+
 3. Configure environment (optional):
+
    ```bash
    # Copy environment template
    make setup-env
@@ -94,7 +104,9 @@ src/problems/{difficulty}/{problem_name}/
    # Edit .env to customize settings
    # **RECOMMENDED** -- Uncomment PYTHONPYCACHEPREFIX for centralized cache
    ```
+
 4. Run the tests:
+
    ```bash
    make test
    # or: pytest
@@ -105,23 +117,31 @@ src/problems/{difficulty}/{problem_name}/
 Python writes compiled `.pyc` files for faster imports. By default, these live in `__pycache__` folders near source files. To keep the tree clean, enable centralized caching (Python 3.8+):
 
 1) Create the cache directory:
+
 ```bash
 make setup-cache
 ```
+
 2) In `.env`, set:
+
 ```bash
 PYTHONPYCACHEPREFIX=.cache/python
 ```
+
 3) Use Make targets (they auto-load `.env`) or source the env:
+
 ```bash
 source setup_env.sh
 ```
+
 4) Run tests as usual:
+
 ```bash
 make test
 ```
 
 Optional:
+
 ```bash
 # Disable bytecode for a run
 PYTHONDONTWRITEBYTECODE=1 python ...
@@ -130,6 +150,7 @@ python -B ...
 ```
 
 Verify centralized caches:
+
 ```bash
 find .cache/python -type f -name "*.pyc" | head
 ```
@@ -192,6 +213,7 @@ This project includes all 75 problems from the [Grind 75](https://www.techinterv
 - **Hard**: 9 problems
 
 Each problem includes:
+
 - ✅ Method stubs with type hints and docstrings
 - ✅ Comprehensive test cases
 - ✅ Problem description template
@@ -199,6 +221,7 @@ Each problem includes:
 - ✅ Auto-importing package structure
 
 To get started with Grind 75:
+
 ```bash
 make setup-grind75  # Generate all 75 problems
 make status         # Check your progress
@@ -208,9 +231,10 @@ make status         # Check your progress
 
 ## Learning Workflow
 
-### For Each Problem:
+### For Each Problem
 
 1. **Read the Problem Description**
+
    ```bash
    # Read the .md file to understand the problem
    cat src/problems/easy/two_sum/two_sum.md
@@ -222,6 +246,7 @@ make status         # Check your progress
    - Update the main functions in `two_sum.py` as you complete them
 
 3. **Test Your Solutions**
+
    ```bash
    # Run tests to see which solutions pass/fail
    python -m pytest tests/problems/easy/test_two_sum.py -v
@@ -231,6 +256,7 @@ make status         # Check your progress
    ```
 
 4. **Check Your Progress**
+
    ```bash
    # See implementation status across all problems
    python scripts/check_solutions.py --all
@@ -239,6 +265,7 @@ make status         # Check your progress
 ### Solution Status Tracking
 
 The test runner will show you:
+
 - ✅ **Implemented**: Solution is complete and passes all tests
 - ❌ **Failed**: Solution is implemented but has bugs
 - ⏳ **Not Implemented**: Solution is just a stub (returns `None` or raises `NotImplementedError`)

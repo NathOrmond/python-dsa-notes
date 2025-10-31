@@ -17,7 +17,24 @@ class Solution:
         Returns:
             bool
         """
-        raise NotImplementedError("Implement the single canonical solution in Solution.solve")
+        occurances = dict()
+        for index, char in enumerate(s):
+            if char in occurances:
+                occurances[char] = occurances[char] + 1
+                continue
+            occurances[char] = 1
+
+        for index, char in enumerate(t):
+            if not char in occurances:
+                return False
+            if occurances[char] is 1:
+                # delete key
+                del occurances[char]
+                continue
+            occurances[char] = occurances[char] - 1
+        
+        # After processing all characters in t, check if all characters matched
+        return len(occurances) == 0
 
 
 def valid_anagram(s: str, t: str) -> bool:
