@@ -1,80 +1,36 @@
 """
 Clone Graph Problem
 
-This module contains the main solution interface and method stubs for different approaches.
+Clean single-entry implementation surface.
 """
 
-from typing import List, Optional
+from typing import Optional
 
 
-def clone_graph(nums: List[int]) -> int:
-    """
-    Main solution function for clone graph.
-    
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
-    
-    Args:
-        nums: List[int]
-        
-    Returns:
-        int: TODO - describe what this function returns
-        
-    Raises:
-        ValueError: If input is invalid
-    """
-    # Use the optimized solution as the main implementation
-    return clone_graph_optimized(nums)
+class Node:
+    def __init__(self, val: int = 0, neighbors: Optional[list['Node']] = None):
+        self.val = val
+        self.neighbors = neighbors or []
 
 
-def clone_graph_brute_force(nums: List[int]) -> int:
-    """
-    Brute force approach for clone graph.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        nums: List[int]
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
+class Solution:
+    def solve(self, node: Optional[Node]) -> Optional[Node]:
+        """
+        Implement the Clone Graph solution here.
+
+        Args:
+            node: Optional[Node]
+
+        Returns:
+            Optional[Node]
+        """
+        raise NotImplementedError("Implement the single canonical solution in Solution.solve")
 
 
-def clone_graph_optimized(nums: List[int]) -> int:
-    """
-    Optimized approach for clone graph.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        nums: List[int]
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
-    pass
+def clone_graph(node: Optional[Node]) -> Optional[Node]:
+    """Thin wrapper to the canonical Solution implementation."""
+    return Solution().solve(node)
 
 
-# Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    pass

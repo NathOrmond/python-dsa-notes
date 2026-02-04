@@ -3,6 +3,57 @@ Tests for Binary Search
 """
 
 import pytest
+from src.problems.easy.binary_search.binary_search import Solution
+
+
+class TestBinarySearch:
+    """Test cases for binary_search problem."""
+
+    def test_examples(self):
+        s = Solution()
+        assert s.solve(nums=[-1, 0, 3, 5, 9, 12], target=9) == 4
+        assert s.solve(nums=[-1, 0, 3, 5, 9, 12], target=2) == -1
+
+    def test_edge_positions(self):
+        s = Solution()
+        assert s.solve(nums=[1], target=1) == 0
+        assert s.solve(nums=[1, 2], target=1) == 0
+        assert s.solve(nums=[1, 2], target=2) == 1
+        assert s.solve(nums=[-5, -3, -1, 0, 2, 4, 7], target=-5) == 0
+        assert s.solve(nums=[-5, -3, -1, 0, 2, 4, 7], target=7) == 6
+
+    def test_absent_values(self):
+        s = Solution()
+        assert s.solve(nums=[1], target=2) == -1
+        assert s.solve(nums=[1, 3, 5, 7], target=0) == -1
+        assert s.solve(nums=[1, 3, 5, 7], target=2) == -1
+        assert s.solve(nums=[1, 3, 5, 7], target=6) == -1
+        assert s.solve(nums=[1, 3, 5, 7], target=8) == -1
+
+    def test_varied_values(self):
+        s = Solution()
+        nums = list(range(-100, 101, 5))  # [-100, -95, ..., 95, 100]
+        for idx, value in enumerate(nums):
+            assert s.solve(nums=nums, target=value) == idx
+
+    def test_large_input_smoke(self):
+        s = Solution()
+        nums = list(range(-5000, 5001))
+        # Check several targets including extremes, middle, and absent value
+        assert s.solve(nums=nums, target=-5000) == 0
+        assert s.solve(nums=nums, target=0) == 5000
+        assert s.solve(nums=nums, target=5000) == len(nums) - 1
+        assert s.solve(nums=nums, target=6000) == -1
+
+
+if __name__ == "__main__":
+    pytest.main([__file__])
+
+"""
+Tests for Binary Search
+"""
+
+import pytest
 from src.problems.easy.binary_search import binary_search, binary_search_brute_force
 
 

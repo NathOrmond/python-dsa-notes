@@ -6,75 +6,56 @@ This module contains the main solution interface and method stubs for different 
 
 from typing import List, Optional
 
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        currMax = 0
+        i_min = None
+        for i in range(len(prices)):
+            if i_min is None or prices[i] < prices[i_min]:
+                i_min = i
+                continue
+            currProfit = prices[i] - prices[i_min]
+            if currProfit > currMax:
+                currMax = currProfit
+        return currMax
 
-def best_time_to_buy_and_sell_stock(nums: List[int]) -> int:
+
+def best_time_to_buy_and_sell_stock(prices: List[int]) -> int:
     """
-    Main solution function for best time to buy and sell stock.
-    
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
-    
+    Main solution function for Best Time To Buy And Sell Stock.
+
+    Uses a single pass to track the minimum price seen so far and the
+    maximum profit achievable at each step.
+
     Args:
-        nums: List[int]
-        
+        prices: List of daily stock prices
+
     Returns:
-        int: TODO - describe what this function returns
-        
-    Raises:
-        ValueError: If input is invalid
+        Maximum profit achievable from one buy and one sell (0 if none)
     """
-    # Use the optimized solution as the main implementation
-    return best_time_to_buy_and_sell_stock_optimized(nums)
+    max_profit = 0
+    min_price_so_far: Optional[int] = None
 
+    for price in prices:
+        if min_price_so_far is None or price < min_price_so_far:
+            min_price_so_far = price
+            continue
+        profit = price - min_price_so_far
+        if profit > max_profit:
+            max_profit = profit
 
-def best_time_to_buy_and_sell_stock_brute_force(nums: List[int]) -> int:
-    """
-    Brute force approach for best time to buy and sell stock.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        nums: List[int]
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
-
-
-def best_time_to_buy_and_sell_stock_optimized(nums: List[int]) -> int:
-    """
-    Optimized approach for best time to buy and sell stock.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        nums: List[int]
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
-    pass
-
+    return max_profit
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    solution = Solution()
+    
+    # Example 1
+    prices1 = [7, 1, 5, 3, 6, 4]
+    print(f"Input: {prices1}")
+    print(f"Output: {solution.maxProfit(prices1)}")
+    
+    # Example 2
+    prices2 = [7, 6, 4, 3, 1]
+    print(f"\nInput: {prices2}")
+    print(f"Output: {solution.maxProfit(prices2)}")

@@ -1,80 +1,43 @@
 """
 Binary Search Problem
 
-This module contains the main solution interface and method stubs for different approaches.
+Clean single-entry implementation surface.
 """
 
-from typing import List, Optional
+from typing import List
 
 
-def binary_search(nums: List[int], target: int) -> int:
-    """
-    Main solution function for binary search.
-    
-    TODO: Implement this function
-    - This is the main interface that should use the optimal approach
-    - See solutions/ directory for different implementations
-    - Time Complexity: TODO
-    - Space Complexity: TODO
-    
-    Args:
-        nums: List[int], target: int
-        
-    Returns:
-        int: TODO - describe what this function returns
-        
-    Raises:
-        ValueError: If input is invalid
-    """
-    # Use the optimized solution as the main implementation
-    return binary_search_binary_search(nums)
+class Solution:
+    def solve(self, nums: List[int], target: int) -> int:
+        """
+        Implement the Binary Search solution here.
 
+        Args:
+            nums: List[int]
+            target: int
 
-def binary_search_brute_force(nums: List[int], target: int) -> int:
-    """
-    Brute force approach for binary search.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        nums: List[int], target: int
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
+        Returns:
+            int
+        """
+        return self.search(nums, target)
 
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = self.mid(low, high)
+            curr = nums[mid]
+            if curr == target:
+                return mid
+            if curr < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
 
-def binary_search_binary_search(nums: List[int], target: int) -> int:
-    """
-    Optimized approach for binary search.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        nums: List[int], target: int
-        
-    Returns:
-        int: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
-    pass
+    def mid(self, low: int, high: int):
+        delta = (high - low) // 2
+        return low + delta
 
-
-# Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    pass

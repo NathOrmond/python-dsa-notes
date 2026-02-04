@@ -7,6 +7,13 @@ This module contains the main solution interface and method stubs for different 
 from typing import List, Optional
 
 
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional['TreeNode'] = None, right: Optional['TreeNode'] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
 def invert_binary_tree(root: Optional[TreeNode]) -> Optional[TreeNode]:
     """
     Main solution function for invert binary tree.
@@ -26,55 +33,24 @@ def invert_binary_tree(root: Optional[TreeNode]) -> Optional[TreeNode]:
     Raises:
         ValueError: If input is invalid
     """
-    # Use the optimized solution as the main implementation
-    return invert_binary_tree_recursive(root)
+    # Single canonical solution: invert the binary tree recursively
+    if root is None:
+        return None
+    root.left, root.right = invert_binary_tree(root.right), invert_binary_tree(root.left)
+    return root
 
 
-def invert_binary_tree_brute_force(root: Optional[TreeNode]) -> Optional[TreeNode]:
-    """
-    Brute force approach for invert binary tree.
-    
-    TODO: Implement this function
-    - Start with the most straightforward approach
-    - Consider all possible combinations/solutions
-    - Time Complexity: O(n²) or higher
-    - Space Complexity: O(1) or O(n)
-    
-    Args:
-        root: Optional[TreeNode]
-        
-    Returns:
-        Optional[TreeNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement brute force solution
-    # Hint: Think about the most obvious way to solve this problem
-    # Hint: Consider nested loops, checking all possibilities
-    pass
-
-
-def invert_binary_tree_recursive(root: Optional[TreeNode]) -> Optional[TreeNode]:
-    """
-    Optimized approach for invert binary tree.
-    
-    TODO: Implement this function
-    - Use the most efficient algorithm/data structure
-    - Consider hash maps, two pointers, dynamic programming, etc.
-    - Time Complexity: O(n) or O(n log n)
-    - Space Complexity: O(n) or O(1)
-    
-    Args:
-        root: Optional[TreeNode]
-        
-    Returns:
-        Optional[TreeNode]: TODO - describe what this function returns
-    """
-    # TODO: Implement optimized solution
-    # Hint: Think about the most efficient way to solve this problem
-    # Hint: Consider using hash maps, two pointers, binary search, etc.
-    pass
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        left_subtree = self.invertTree(root.left)
+        right_subtree = self.invertTree(root.right)
+        root.left = right_subtree
+        root.right = left_subtree
+        return root
 
 
 # Example usage
 if __name__ == "__main__":
-    # TODO: Add example usage here
-    print("TODO: Add example usage")
+    pass

@@ -9,6 +9,20 @@ python scripts/check_solutions.py
 python -m pytest tests/problems/easy/test_two_sum.py -v
 ```
 
+### Centralized Bytecode Cache (Recommended)
+Keep your repo clean by centralizing `.pyc` files (Python 3.8+):
+```bash
+make setup-cache
+echo 'PYTHONPYCACHEPREFIX=.cache/python' >> .env
+source setup_env.sh  # or use Make targets which auto-load .env
+```
+
+### Cleanup
+```bash
+python scripts/clean_caches.py            # delete caches/build artifacts
+python scripts/clean_caches.py --dry-run  # preview only
+```
+
 ## 📝 Implementation Workflow
 
 ### 1. Read the Problem

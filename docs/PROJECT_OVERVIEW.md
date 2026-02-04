@@ -44,6 +44,8 @@ python scripts/track_progress.py --report  # See learning stats
 make create-problem DIFFICULTY=easy NAME=valid_parentheses
 make format                  # Format your code
 make lint                    # Check code quality
+make clean-cache             # Remove scattered __pycache__ folders
+python scripts/clean_caches.py  # Clean caches and build artifacts
 ```
 
 ## 📚 **Your Learning Path**
@@ -62,6 +64,27 @@ make lint                    # Check code quality
 - **Comprehensive Documentation**: Every approach explained
 - **Professional Tools**: Same tools used in real development
 - **Motivation Tracking**: Streaks and progress keep you going
+
+## 🧹 Cache Management and Build Artifacts
+
+Python compiles modules to bytecode (`.pyc`). By default, these live in `__pycache__` folders. This project supports centralizing bytecode using `PYTHONPYCACHEPREFIX` so your source tree stays clean.
+
+Enable centralized cache (Python 3.8+):
+```bash
+make setup-cache
+echo 'PYTHONPYCACHEPREFIX=.cache/python' >> .env
+```
+Run the project using Make targets (they auto-load `.env`), or:
+```bash
+source setup_env.sh
+```
+
+Cleanup utilities:
+```bash
+python scripts/clean_caches.py            # remove caches and build artifacts
+python scripts/clean_caches.py --dry-run  # preview changes
+python scripts/clean_caches.py --verbose  # print removed paths
+```
 
 ## 🔥 **Next Steps**
 
